@@ -89,6 +89,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+tracker_env/
 
 # Spyder project settings
 .spyderproject
@@ -102,3 +103,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# data files
+inputs.json
+line_data.tsv
+
+

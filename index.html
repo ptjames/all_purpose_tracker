@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="main.js"></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div id="topbar">All-Purpose Tracker Beta</div>
+  <table id="main_table"><table>
+    <tr>
+      <td id="navigation"></td>
+      <td id="inputs">
+        <iframe id="inputs_line_chart"></iframe>
+        <table id="inputs_details">
+          <tr>
+            <td id="inputs_table_container">
+              <table id="inputs_table"></table>
+            </td>
+            <td id="net_worth_container">
+              <table id="net_worth_table">
+                <tr>
+                  <td></td>
+                </tr>
+                  <td></td><td>Value</td>
+                <tr id="current_worth">
+                  <td class="net_worth_table_td">Current Worth</td>
+                  <td id="current_worth_value" class="net_worth_table_td"></td>
+                </tr>
+                <tr id="future_worth">
+                  <td class="net_worth_table_td">Future Worth</td>
+                  <td id="future_worth_value" class="net_worth_table_td"></td>
+                </tr>
+                <tr id="goal_year">
+                  <td class="net_worth_table_td">Goal Year</td>
+                  <td><input id="goal_year_value" class="table_form"></input></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table
+      </td>
+    </tr>
+
+</html>
