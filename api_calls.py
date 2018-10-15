@@ -19,6 +19,10 @@ import os
 import flask
 app = flask.Flask(__name__)
 
+@app.route("/")
+def hello():
+	return flask.render_template('index.html')
+
 @app.route("/loadinputs/", methods=['POST'])
 def load_data():
 	with open('inputs.json') as f: inputs = json.load(f)
@@ -43,7 +47,7 @@ def refresh_file():
 	for d in dates:
 		output_data.append([d])
 		for i in range(0,len(cols)): output_data[-1].append(data_formatted[cols[i]][d])
-	f = open('line_data.tsv', 'w')
+	f = open('static/line_data.tsv', 'w')
 	for i in range(0,len(output_data)): f.write('\t'.join(output_data[i]) + '\n')
 	f.close()
 	response = flask.jsonify({})
@@ -51,4 +55,5 @@ def refresh_file():
 	return response
 
 if __name__ == "__main__":
-    app.run()
+	if sys.argv[1] == 'test': app.run()
+	if sys.argv[1] == 'prod': app.run(host= '0.0.0.0')

@@ -7,7 +7,7 @@ $(document).ready(function(e) {
 
   // Loading Existing Data
   $.ajax({
-    url: "http://127.0.0.1:5000/loadinputs/",
+    url: "http://66.228.40.96:5000/loadinputs/",
     type: "post",
     data: {},
     success: function(response) {
@@ -177,7 +177,7 @@ $(document).ready(function(e) {
   // Refresh Chart Data
   function refresh_chart_data(inputs_series, user) {
     $.ajax({
-      url: "http://127.0.0.1:5000/refreshfile/",
+      url: "http://66.228.40.96:5000/refreshfile/",
       type: "post",
       data: {series: inputs_series},
       success: function(response) {},
@@ -192,7 +192,7 @@ $(document).ready(function(e) {
   function draw_charts(inputs_series, user) {
     var graph_iframe = document.getElementById("inputs_line_chart");
     graph_iframe.setAttribute("user", user);
-    graph_iframe.setAttribute("src", "line_chart.html");
+    graph_iframe.setAttribute("src", "/static/line_chart.html");
     graph_iframe.setAttribute("style", "height: 500px; width: 100%");
   };
 
