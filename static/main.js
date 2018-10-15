@@ -94,7 +94,7 @@ $(document).ready(function(e) {
     }
     var table = document.getElementById("inputs_table")
     while (table.firstChild) { table.removeChild(table.firstChild) };
-    var cols = ["current_amount", "APR", "low_estimate_deposit", "high_estimate_deposit"]
+    var cols = ["current_amount", "apr", "low_estimate_deposit", "high_estimate_deposit"]
     var adj_inputs = [""]
     for (var input in inputs) { adj_inputs.push(input) };
     for (i = 0; i < adj_inputs.length; i++) {
@@ -156,7 +156,7 @@ $(document).ready(function(e) {
         cur_value = inputs[input]["current_amount"]
         deposit = inputs[input][deposit_type + "_estimate_deposit"]
         var today = new Date();
-        inputs[input]["monthly_rate"] = ((1+inputs[input]["APR"])**(1/12.0) - 1.0)
+        inputs[input]["monthly_rate"] = ((1+inputs[input]["apr"])**(1/12.0) - 1.0)
         for (i = 0; i < 100; i++) {  
           if (i > 0 && today.getFullYear()+i > max_year) { continue };
           var cur_date = (today.getFullYear()+i) + '-' + (today.getMonth()+1) +'-' + today.getDate();

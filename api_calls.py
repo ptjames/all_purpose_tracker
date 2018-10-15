@@ -4,9 +4,11 @@
 
 from urllib.parse import unquote
 from pprint import pprint
+import MySQLdb.cursors
 import pandas as pd
 import numpy as np
 import requests
+import MySQLdb
 import time
 import json
 import sys
@@ -15,6 +17,15 @@ import os
 #################
 ##  FLASK APP  ##
 #################
+
+with open('/root/config_files/databases.conf') as f: conf = json.load(f)['tracker']
+con = MySQLdb.connect(
+        host=conf['host'],
+        user=conf['user'],
+        passwd=conf['passwd'],
+        db=conf['db'],
+        cursorclass=MySQLdb.cursors.DictCursor
+)
 
 import flask
 app = flask.Flask(__name__)
@@ -25,10 +36,18 @@ def hello():
 
 @app.route("/loadinputs/", methods=['POST'])
 def load_data():
-	with open('inputs.json') as f: inputs = json.load(f)
+	cur = con.cursor()
+	inputs = {}
+	sql = " SELECT * FROM tracker.users_income_streams "
+	cur.execute(sql)
+	rows = cur.fetchall()
+	for row in rows:
+		if row['user'] not in inputs: inputs[row['user']] = {}
+		inputs[row['user']][row['stream']] = row
 	documents = inputs
 	response = flask.jsonify(documents)
 	response.headers.add('Access-Control-Allow-Origin', '*')
+	cur.close()
 	return response
 
 @app.route("/refreshfile/", methods=['POST'])
